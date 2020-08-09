@@ -1,0 +1,21 @@
+service: count
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+plugins:
+  - serverless-offline
+
+functions:
+  count:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /count
+          method: post
+          cors: true
+      - http:
+          path: /count
+          method: get
+          cors: true
